@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>home</title>
+<script src="processing-1.4.1.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+
+PImage homepage;
+PImage start1;
+PImage start;
+PFont cartoon;
+
+
+void setup()
+{  
+    size( 1680, 900 ); 
+    
+   homepage = loadImage("homepage.jpg");
+      start = loadImage("start.jpg");
+   start1 = loadImage("start1.png");
+      	cartoon = loadFont("From Cartoon Blocks");
+      	
+   
+}
+
+void draw()
+{
+textFont(cartoon,32);
+image(homepage,0,0,1680,900);
+image(start,770,560,150,130);
+    
+    if (mouseX > 770 && mouseX < 920 && mouseY > 560 && mouseY < 690)
+   	  {
+	 image(start1,775,550,130,110);
+   	  }
+   	  
+   	 if (mousePressed == true && mouseButton == LEFT)
+    {
+    if (mouseX > 770 && mouseX < 920 && mouseY > 560 && mouseY < 690)
+   	  {
+	 link("project 1.html");
+   	  }
+    }
+    
+fill(0,288,288); 
+text("Eliminate the enemies before time ends!",400,300);
+text("Press A to move Left, Press D to move right, Press Spacebar to fire!",400,350)
+
+    
+
+	
+	
+}
+
+</script>
+<canvas id="mycanvas"></canvas>
+</head>
+
+<body>
+
+</body>
+</html>

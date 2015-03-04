@@ -1,0 +1,311 @@
+<html>
+<head>
+<title> Project 1</title>
+
+<script type="text/javascript" src="script/soundmanager2.js"></script>
+<script type="text/javascript" src="script/loadsoundchrome.js"></script>
+
+<script src="processing-1.4.1.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+
+
+
+
+
+
+PFont cartoon;
+PImage space;
+PImage spaces;
+PImage space1;
+PImage space2;
+PImage space3;
+int x;
+int y;
+int x1;
+int x2;
+int x3;
+int x4;
+int x5;
+int w;
+int fire;
+int initialTime = 0;
+int newSecond = 0;
+int q = 0;
+int minuteMultiplier = 0;
+int reversedTime = 0;
+boolean recordTime = false;
+boolean nextMinute = true;
+int counter1;
+int np1;
+int p1;
+int np2;
+int p2;
+int np3;
+int p3;
+int np4;
+int p4;
+int np5;
+int p5;
+void setup()
+{  
+    size( 1680, 850 ); 
+    cartoon = loadFont("From Cartoon Blocks");
+    space = loadImage("space.jpg");
+    spaces = loadImage("spaces.gif");
+    space1 = loadImage("space1.png");
+    space2 = loadImage("space2.png");
+    space3 = loadImage("space3.png");
+    laser = loadImage("1.png");
+    laser2 = loadImage("2.png");
+    x=840;
+    y=650;
+    fire=0;
+    w = 0;
+    q1 = 0;
+    q2 = 0;
+    q3 = 0;
+    q4 = 0;
+    counter1 = 5;
+    np1 = 0;        
+	p1 = 0;
+	np2 = 0;
+	p2 = 0;
+	np3 = 0;
+	p3 = 0;
+	np4 = 0;
+	p4 = 0;
+	np5 = 0;
+	p5 = 0;
+}
+
+void draw()
+{
+	textFont(cartoon,32);
+    	
+    soundManager.play('s0');
+    	
+    image(space,0,0);
+  	x1 = 130*sin(frameCount/27)+127;
+    x2 = 130*sin(frameCount/33)+450;
+  	x3 = 130*sin(frameCount/30)+1200;
+   	x4 = 130*sin(frameCount/31)+640;
+  	x5 = 130*sin(frameCount/28)+1420;
+
+	//our spaceship
+	image(spaces,x,600); 
+	
+	//move
+
+	if (keyPressed == true)
+		{
+		if (key == 'a')
+		{
+		x = x-5;
+		}
+	  }	   
+	  
+	  if (keyPressed == true)
+		if (key == 'd')
+		{
+		x=x+5;
+		}
+		
+	//fire
+	
+	if (keyPressed == true)
+	{
+		if (key == ' ')
+		{
+	    image(laser2,x+120,y);
+	    image(laser,x+20,y);
+	    fire = 1;
+		}
+	} 
+		if (fire == 1)
+	{
+	image(laser2,x+120,y);
+	image(laser,x+20,y)
+	y=y-25;
+	}
+	 
+	    
+	 if (y < 0)
+	 {
+     y=660;
+     fire=0;
+	 } 
+
+	 
+	// enemy spaceship
+ // image(space1,amplitude((frequency)+centerpoint,20);
+			if (w==0)
+			{
+			image(space1,x1,20);
+			}
+   
+			if (q1==0)
+			{
+			image(space1,x2,20);
+		    }
+   
+			if (q2==0)
+			{
+			image(space1,x3,20);
+			}
+   
+			if (q3==0)
+			{
+			image(space3,x4,20);
+			}
+   
+			if (q4==0)
+			{
+			image(space1,x5,20);
+			}
+   
+   
+//collision 
+			d1 = (int)sqrt(sq((x+120)-x1)+sq(y-20));
+			
+			if (p1 == 1)
+			{
+			w = 1;
+			counter1 = counter1 - 1;
+			np1 = 1;
+			}
+			if (np1 == 1)
+			{
+			p1 = 0;
+			}
+	
+		if(np1 == 0)
+	{
+		if(d1 < 150)
+		{
+		p1 = 1;	
+		}
+    }
+
+text(counter1,50,50);
+	
+			d2 = (int)sqrt(sq((x+120)-x2)+sq(y-20));
+			
+			if (p2 == 1)
+			{
+			q1 = 1;
+			counter1 = counter1 - 1;
+			np2 = 1;
+			}
+			if (np2 == 1)
+			{
+			p2 = 0;
+			}
+			if(np2 == 0)
+		{
+			if(d2 < 150)
+			{
+			p2 = 1;
+			}
+		}
+			
+
+			d3 = (int)sqrt(sq((x+120)-x3)+sq(y-20));
+			if (p3 == 1)
+			{
+			q2 = 1;
+			counter1 = counter1 - 1;
+			np3 = 1;
+			}
+			if (np3 == 1)
+			{
+			p3 = 0;
+			}
+			if(np3 == 0)
+		{
+			if(d3 < 150)
+			{
+			p3 = 1;
+			}
+		}
+	
+	
+			   d4 = (int)sqrt(sq((x+120)-x4)+sq(y-20));
+			if (p4 == 1)
+			{
+			q3 = 1;
+			counter1 = counter1 - 1;
+			np4 = 1;
+			}
+			if (np4 == 1)
+			{
+			p4 = 0;
+			}
+			if(np4 == 0)
+		{
+			if(d4 < 150)
+			{
+			p4 = 1;
+			}
+		}
+	
+			 d5 = (int)sqrt(sq((x+120)-x5)+sq(y-20));
+			if (p5 == 1)
+			{
+			q4 = 1;
+			counter1 = counter1 - 1;
+			np5 = 1;
+			}
+			if (np5 == 1)
+			{
+			p5 = 0;
+			}
+			if(np5 == 0)
+		{
+			if(d5 < 150)
+			{
+			p5 = 1;
+			}
+		}
+	
+			
+			if (counter1 == 0)
+			{
+			link ("Winning page.html");
+			}
+	
+// Countdown
+	
+    if (second() == 0)
+    {
+        if (q == 0)
+        {
+            minuteMultiplier = minuteMultiplier + 1;
+            q = 5;
+        }
+    }
+
+    if (recordTime == false)
+    {
+        recordTime = true;
+        initialTime = second();
+    }
+    
+    //                                 25..59   - 25
+    newSecond = minuteMultiplier*60 + second() - initialTime;
+    reversedTime = 15 - newSecond;
+    
+    text("Time:"+reversedTime,200,800);
+    
+    if (reversedTime == 0)
+{
+link("Gameover.html")
+}
+}
+</script>
+<canvas id="mycanvas"></canvas>
+</head>
+
+<body>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<html>
+<head>
+<title> Project 1</title>
+<script src="processing-1.4.1.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+
+PImage homepage;
+PImage gameover;
+PFont cartoon;
+void setup()
+{  
+    size( 1680, 900 ); 
+        background(255,255,255);
+          	cartoon = loadFont("From Cartoon Blocks");
+    
+   gameover = loadImage("gameover.png");
+
+   
+}
+
+void draw()
+{
+textFont(cartoon,32);
+image(gameover,620,250,450,380);
+ 	
+fill(255,255,255);
+stroke(255,0,0);
+strokeWeight(1);
+rect(780,600,190,30);
+    
+fill(0,0,288);
+text("Play Again",780,630);
+if (mousePressed == true && mouseButton == LEFT)
+	
+if (mouseX > 780 && mouseX < 970 && mouseY >600 && mouseY < 630)
+
+link("project 1 homepage.html");
+	
+	
+}
+
+</script>
+<canvas id="mycanvas"></canvas>
+</head>
+
+<body>
+
+</body>
+</html>

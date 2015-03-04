@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>You Won!</title>
+<script src="processing-1.4.1.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+
+PImage homepage;
+	PFont cartoon;
+
+void setup()
+{  
+    size( 1680, 900 ); 
+    
+   homepage = loadImage("homepage.jpg");
+   	cartoon = loadFont("From Cartoon Blocks");
+   
+}
+
+void draw()
+{
+textFont(cartoon,32);
+image(homepage,0,0,1680,900);
+
+text("You Win!",780,550);
+ 	
+fill(255,255,255);
+stroke(255,0,0);
+strokeWeight(1);
+rect(780,600,190,30);
+    
+fill(0,0,288);
+text("Play Again",780,630);
+if (mousePressed == true && mouseButton == LEFT)
+	
+if (mouseX > 780 && mouseX < 970 && mouseY >600 && mouseY < 630)
+
+link("project 1 homepage.html");
+	
+}
+
+</script>
+<canvas id="mycanvas"></canvas>
+</head>
+
+<body>
+
+</body>
+</html>

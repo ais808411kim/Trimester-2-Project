@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>timer</title>
+<script src="../processing-1.4.1.js"></script>
+<script type="text/processing" data-processing-target="mycanvas">
+
+int initialTime = 0;
+int newSecond = 0;
+int q = 0;
+int minuteMultiplier = 0;
+int reversedTime = 0;
+boolean recordTime = false;
+boolean nextMinute = true;
+
+void setup()
+{  
+
+    size( 500, 500 );  
+    frameRate( 30 );
+
+}  
+
+
+void draw()
+{
+    background(0,0,0);
+
+    stroke(255,255,255);
+
+    if (second() == 0)
+    {
+        if (q == 0)
+        {
+            minuteMultiplier = minuteMultiplier + 1;
+            q = 5;
+        }
+    }
+
+    if (recordTime == false)
+    {
+        recordTime = true;
+        initialTime = second();
+    }
+    
+    //                                 25..59   - 25
+    newSecond = minuteMultiplier*60 + second() - initialTime;
+    reversedTime = 90 - newSecond;
+    
+    text("newSecond: "+newSecond,50,50);
+    text("second(): "+second(),50,100);
+    text("initialTime: "+initialTime,50,150);
+    text("reversed time: "+reversedTime,150,200);
+
+}
+
+
+
+</script>
+<canvas id="mycanvas"></canvas>
